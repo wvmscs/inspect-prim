@@ -2,12 +2,14 @@
 name = "pdf-inspect"
 version = "0.1.0"
 authors = ["Erlend Langseth <3rlendhl@gmail.com>"]
+edition = "2024"
+
 
 [dependencies]
 pdf = {git = "https://github.com/pdf-rs/pdf"}
 # pdf = {path = "../pdf" }
-gfx = "0.16.1"
-glutin = "0.9.2"
-gfx_window_glutin = "0.17.0"
-imgui = "0.0.15"
-imgui-gfx-renderer = "0.0.15"
+gfx = "0.18.3"
+glutin = "0.32.3"
+gfx_window_glutin = "0.31.0"
+imgui = "0.8.2"
+imgui-gfx-renderer = "0.8.2"
