@@ -1,13 +1,13 @@
 use pdf::*;
 use object::*;
-use backend::*;
+
 use primitive::*;
 
 use std::collections::{VecDeque, HashSet};
 use std::collections::vec_deque;
 use std::str::FromStr;
 
-use Inspector;
+use crate::Inspector;
 
 
 #[derive(Debug)]
@@ -28,7 +28,7 @@ impl PathElem {
 pub struct SearchPath {
     path: VecDeque<PathElem>,
 }
-impl SearchPath {
+impl<'a> SearchPath {
     pub fn new(start: PathElem) -> SearchPath {
         let mut new_path = SearchPath::default();
         new_path.path.push_back(start);
@@ -38,11 +38,11 @@ impl SearchPath {
     pub fn add_to_start(&mut self, elem: PathElem) {
         self.path.push_front(elem);
     }
-    pub fn iter(&self) -> vec_deque::Iter<PathElem> {
+    pub fn iter(&'a self) -> vec_deque::Iter<'a,PathElem> {
         self.path.iter()
     }
 }
-
+    
 
 /// Used internally to store information about where we have been
 struct SearchAlg<'a, R: Resolve + 'a> {
@@ -107,7 +107,7 @@ impl<'a, R: Resolve> SearchAlg<'a, R> {
     }
 }
 
-impl<'a, 'b, R: Resolve> Inspector<'a, 'b, R> {
+impl<'a,  R: Resolve> Inspector<'a, R> {
 
     pub fn search_key(&self, node: &Primitive, search_key: &str) -> Vec<SearchPath> {
         let mut alg = SearchAlg::new(self.resolve);

@@ -1,5 +1,6 @@
-use imgui::{ImGui, Ui};
+use imgui::{Ui};
 use std::time::Instant;
+
 
 #[derive(Copy, Clone, PartialEq, Debug, Default)]
 struct MouseState {
@@ -7,7 +8,7 @@ struct MouseState {
     pressed: (bool, bool, bool),
     wheel: f32,
 }
-
+/* 
 pub fn run<F: FnMut(&Ui) -> bool>(title: String, clear_color: [f32; 4], mut run_ui: F) {
     use gfx::{self, Device};
     use gfx_window_glutin;
@@ -179,3 +180,4 @@ fn update_mouse(imgui: &mut ImGui, mouse_state: &mut MouseState) {
     imgui.set_mouse_wheel(mouse_state.wheel / scale.1);
     mouse_state.wheel = 0.0;
 }
+*/
